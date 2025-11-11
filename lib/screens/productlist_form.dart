@@ -65,6 +65,75 @@ class _ProductFormPageState extends State<ProductFormPage> {
                     if (value == null || value.isEmpty) {
                       return "Nama Produk tidak boleh kosong!";
                     }
+                    if (value.length < 1) {
+                      return "Nama Produk minimal 1 karakter!";
+                    }
+                    if (value.length > 250) {
+                      return "Nama Produk maksimal 250 karakter!";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+
+              // Harga
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Harga',
+                    labelText: 'Harga',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  keyboardType: TextInputType.number, 
+                  onChanged: (String? value) {
+                    setState(() {
+                      _price = int.tryParse(value ?? '') ?? 0;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Harga tidak boleh kosong!";
+                    }
+                    if (int.tryParse(value) == null) {
+                      return "Harga harus berupa angka!";
+                    }
+                    if (int.parse(value) <= 0) {
+                      return "Harga harus lebih dari 0!";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+
+              // deskripsi
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Deskripsi',
+                    labelText: 'Deskripsi',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      _description = value!;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Deskripsi tidak boleh kosong!";
+                    }
+                    if (value.length < 5) {
+                      return "Nama Produk minimal 5 karakter!";
+                    }
+                    if (value.length > 500) {
+                      return "Nama Produk maksimal 500 karakter!";
+                    }
                     return null;
                   },
                 ),
@@ -101,17 +170,27 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "URL Thumbnail (opsional)",
+                    hintText: "URL Thumbnail",
                     labelText: "URL Thumbnail",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
+                  keyboardType: TextInputType.url,
                   onChanged: (String? value) {
                     setState(() {
                       _thumbnail = value!;
                     });
                   },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "URL Thumbnail tidak boleh kosong!";
+                    }
+                    if (!value.startsWith('http://') && !value.startsWith('https://')) {
+                      return "Format URL tidak valid (harus diawali http:// atau https://)";
+                    }
+                    return null;
+                  }
                 ),
               ),
 
