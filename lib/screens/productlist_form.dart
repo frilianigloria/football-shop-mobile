@@ -35,8 +35,6 @@ class _ProductFormPageState extends State<ProductFormPage> {
             'Add Product Form',
           ),
         ),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
       ),
       drawer: LeftDrawer(),
       body: Form(
@@ -129,10 +127,10 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       return "Deskripsi tidak boleh kosong!";
                     }
                     if (value.length < 5) {
-                      return "Nama Produk minimal 5 karakter!";
+                      return "Deskripsi minimal 5 karakter!";
                     }
                     if (value.length > 500) {
-                      return "Nama Produk maksimal 500 karakter!";
+                      return "Deskripsi maksimal 500 karakter!";
                     }
                     return null;
                   },
@@ -200,6 +198,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 child: SwitchListTile(
                   title: const Text("Feature Product"),
                   value: _isFeatured,
+                  activeColor: Theme.of(context).primaryColor,
                   onChanged: (bool value) {
                     setState(() {
                       _isFeatured = value;
@@ -216,7 +215,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.indigo),
+                          MaterialStateProperty.all(
+                            Theme.of(context).primaryColor
+                          ),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
