@@ -87,7 +87,6 @@ SingleChildScrollView memnungkinkan seluruh page di scroll jika content form tin
 ListView berguna untuk menampilkan banyak elemen secara vertikal yang dapat di scroll otomatis tanpa overflow, membuat layout tetap fleksibel saat jumlah widget bertambah. Contohnya LeftDrawer menggunakan ListView untuk menampilkan item menu agar dapat discroll jika menunya bertambah.
 
 
-4. 
-
+4. Untuk menjaga identitas visual yang konsisten, aplikasi ini menyesuaikan warna tema melalui pengaturan ColorScheme pada ThemeData yang ada di main.dart, sehingga seluruh elemen interface menggunakan warna yang selaras.
 
 </details>
