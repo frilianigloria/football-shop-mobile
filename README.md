@@ -144,5 +144,10 @@ Logout
 * CookieRequest juga menghapus cookie.
 * flutter kembali ke halaman login dan user dianggap sudah logout.
 
- 
+
+5.  
+* mengintegrasikan autentikasi django-flutter dengan setup autentikasi di django untuk flutter, kemudian integrasi sistem autentikasi pada flutter.
+* membuat model kustom
+* menerapkan fetch data dari django untuk ditampilkan ke flutter dengan menambahkan dependensi HTTP, mengintegrasikan data product list dan data product detail dari django.
+* integrasi form flutter dengan django
 </details>
