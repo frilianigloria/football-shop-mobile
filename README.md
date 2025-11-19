@@ -139,9 +139,10 @@ Login
 * flutter sekjarang dianggap 'logged in' dan diarahkan ke homepage
 
 Logout
-* flutter hanya mengirim data login/register.
-* django yang memverifikasi dan membuat session.
-* CookieRequest menyimpan session cookie sehingga Flutter tetap login.
-* setelah login sukses, Flutter menampilkan menu utama.
+* Flutter memanggil endpoint logout pakai CookieRequest.
+* django menghapus session.
+* CookieRequest juga menghapus cookie.
+* flutter kembali ke halaman login dan user dianggap sudah logout.
 
+ 
 </details>
