@@ -90,3 +90,11 @@ ListView berguna untuk menampilkan banyak elemen secara vertikal yang dapat di s
 4. Untuk menjaga identitas visual yang konsisten, aplikasi ini menyesuaikan warna tema melalui pengaturan ColorScheme pada ThemeData yang ada di main.dart, sehingga seluruh elemen interface menggunakan warna yang selaras.
 
 </details>
+
+***
+
+<details>
+<Summary><b> Tugas 9 </b></Summary>
+
+
+</details>

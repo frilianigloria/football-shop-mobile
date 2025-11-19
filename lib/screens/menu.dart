@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gearup_store/screens/productlist_form.dart';
 import 'package:gearup_store/widgets/left_drawer.dart';
 import 'package:gearup_store/widgets/product_card.dart';
+import 'package:gearup_store/widgets/right_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -31,6 +32,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       drawer: LeftDrawer(),
+      endDrawer: RightDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

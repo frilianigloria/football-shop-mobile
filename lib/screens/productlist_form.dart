@@ -63,9 +63,6 @@ class _ProductFormPageState extends State<ProductFormPage> {
                     if (value == null || value.isEmpty) {
                       return "Nama Produk tidak boleh kosong!";
                     }
-                    if (value.length < 1) {
-                      return "Nama Produk minimal 1 karakter!";
-                    }
                     if (value.length > 250) {
                       return "Nama Produk maksimal 250 karakter!";
                     }
