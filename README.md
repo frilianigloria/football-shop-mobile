@@ -96,5 +96,52 @@ ListView berguna untuk menampilkan banyak elemen secara vertikal yang dapat di s
 <details>
 <Summary><b> Tugas 9 </b></Summary>
 
+1. Kita perlu membuat model Dart untuk data JSON untuk menjamin validasi tipe data (type safety). Dengan model, setiap field punya tipe yang jelas. Jika JSON yang masuk salah tipe (misalnya age berupa string), aplikasi bisa langsung error di level parsing.
+Dengan model, null-safety bekerja lebih maksimal karena model memanfaatkan sistem null-safety Dart, dimana kita bisa menenetukan apakah suatu field boleh null atau tidak. Tanpa mode, semua field akan dianggap nullable dan kita harus memeriksa null berulang-ulang secara manual yang berakhir pada resiko runtime crash yang lebih besar.
+Dengan model juga, kode akan menjadi lebih rapi dan mudah di maintain. Jika struktur JSON berubah, kita cukup mengubah modelnya saja.
+
+
+2. http adalah package standar flutter untuk melakukan request HTTP tanpa state login, yaitu GET data dari server, POST data ke server, mengirim header, body, JSON, dan mendapat response dari server. sedangkan CookieRequest menyimpan cookie/session Django, menjaga state login di Flutter, meng-handle login Django dengan CSRF token secara otomatis, dan menyertakan cookie pada setiap request setelah login.
+
+
+3. 
+* Menambahkan 10.0.2.2 ke ALLOWED_HOSTS -> saat aplikasi Flutter dijalankan di android emulator, alamat server local tidak dikenali sebagai localhost, tapi dialihkan menjadi 10.0.2.2 (alias khusus android emulator untuk mengakses komputer host).
+Jika tidak ditambahkan, django akan menolak request dengan error Bad Request, Flutter tidak bisa mengambil data sama sekali, dan semua koneksi ke backend gagal, meskipun server aktif.
+* Mengaktifkan CORS -> Flutter dianggap origin berbeda dari Django (terutama saat debugging melalui emulator). Browser atau framework HTTP modern akan memblokir request lintas origin tanpa konfigurasi CORS.
+Jika tidak diaktifkan, Flutter tidak dapat mengambil data, request akan diblokir sebelum mencapai Django, akan terjadi error.
+* Pengaturan Cookie + SameSite -> Diperlukan karena Flutter dianggap sebagai aplikasi lintas-origin.
+Jika tidak disetting, login mungkin berhasil, tetapi request selanjutnya tidak membawa session (tidak dianggap login), request POST yang butuh CSRF akan ditolak, dan fitur yang perlu autentikasi tidak bisa dipakai.
+* Menambahkan izin internet pada Android -> tanpa izin ini, aplikasi tidak bisa melakukan HTTP request sama sekali.
+
+
+4.  
+* user mengisi form di Flutter
+* flutter melakukan request POST
+* django menerima request, memproses data
+* django menyimpan data ke database
+* flutter melakukan GET untuk mengambil data terbaru
+* JSON dari django diparse menjadi model Dart
+* flutter menampilkan data di UI
+
+5. 
+Register
+* user isi form register di flutter
+* flutter kirim data ke Django via POST
+* django cek validasi -> buat user baru -> simpan ke databse
+* django balas jSON sukses/gagal
+* flutter tampilkan hasil (if berhasil -> ke halaman login)
+
+Login
+* user isi username + password 
+* flutter kirim ke django pakai CookieRequest
+* django autentikasi (jika benar -> django buat session + kirim cookie session)
+* CookieRequest menyimpan cookie itu.
+* flutter sekjarang dianggap 'logged in' dan diarahkan ke homepage
+
+Logout
+* flutter hanya mengirim data login/register.
+* django yang memverifikasi dan membuat session.
+* CookieRequest menyimpan session cookie sehingga Flutter tetap login.
+* setelah login sukses, Flutter menampilkan menu utama.
 
 </details>
